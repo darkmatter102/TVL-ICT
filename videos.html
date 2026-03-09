@@ -66,16 +66,35 @@
         document.body.classList.add('dark-theme');
 
 
+        // helper to compute thumbnail URLs for various video providers.
+        function getVideoThumbnail(url) {
+            // YouTube (long and short forms)
+            if (/youtu(?:\.be|be\.com)/.test(url)) {
+                let videoId;
+                if (url.includes('youtube.com/watch')) {
+                    videoId = url.split('v=')[1].split('&')[0];
+                } else {
+                    videoId = url.split('youtu.be/')[1].split('?')[0];
+                }
+                return `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+            }
+
+            // Vimeo (using third‑party service vumbnail.com)
+            if (url.includes('vimeo.com/')) {
+                const videoId = url.split('vimeo.com/')[1].split(/[?&]/)[0];
+                return `https://vumbnail.com/${videoId}.jpg`;
+            }
+
+            // fallback for unsupported providers
+            return 'assets/images/nothumb.png';
+        }
+
+        // inject thumbnails into the grid
         const videoItems = document.querySelectorAll('.video-item a');
         videoItems.forEach(item => {
             const url = item.href;
             const img = item.querySelector('img');
-            let thumbnailUrl = 'assets/images/nothumb.png';
-            if (url.includes('youtube.com/watch?v=')) {
-                const videoId = url.split('v=')[1].split('&')[0];
-                thumbnailUrl = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
-            }
-            img.src = thumbnailUrl;
+            img.src = getVideoThumbnail(url);
             img.onerror = function() {
                 this.src = 'assets/images/nothumb.png';
             };
@@ -110,7 +129,4 @@
 
     </script>
 </body>
-
 </html>
-
-
