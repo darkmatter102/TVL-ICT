@@ -341,6 +341,51 @@ section {
   }
 }
 
+
+/* Image Grid */
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 200px); 
+  gap: 1rem; 
+  justify-content: center; 
+}
+
+.image-item {
+  width: 200px; 
+  background: #3a3a3a;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.image-item img {
+  width: 200px;
+  height: 250px;
+  object-fit: cover;
+  display: block;
+}
+
+.caption {
+  padding: 0.5rem;
+  font-size: 0.85rem;
+  color: #e0e0e0;
+}
+
+.caption .quote {
+  text-align: left;
+  color: #b0b0b0;
+  font-style: italic;
+  margin-bottom: 0.3rem;
+}
+
+.caption .name {
+  text-align: right;
+  font-weight: 600;
+  color: var(--accent-color);
+  font-size: 0.8rem;
+}
+
 /* Video Grid */
 .video-grid {
   display: grid;

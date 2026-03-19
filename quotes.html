@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TVL ICT - Video Links</title>
+    <link rel="stylesheet" href="functions/Header/header.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="home-bg">
+    <div id="header"></div>
+    <main>
+        <section>
+        <h2>Quotes from ICT Batch 1</h2>
+        <p>Here are some quotes from ICT Batch 1:</p>
+        
+        <div class="image-grid">
+
+            <div class="image-item">
+            <img src="assets/images/JB.jpg" alt="Student Photo3">
+            <div class="caption">
+                <div class="quote">"Your effort will soon be rewarded. GOOD JOB!!!"</div>
+                <div class="name">– Sir. JB</div>
+            </div>
+            </div>
+
+            <div class="image-item">
+            <img src="assets/images/JHAY.png" alt="Student Photo">
+            <div class="caption">
+                <div class="quote">"Life is hard and let's make it harder"</div>
+                <div class="name">– Jhay</div>
+            </div>
+            </div>
+
+            <div class="image-item">
+            <img src="assets/images/VJ.jpg" alt="Student Photo">
+            <div class="caption">
+                <div class="quote">"SYBAU(Stay, Young, Beautiful, And, Unique)"</div>
+                <div class="name">– VJ</div>
+            </div>
+            </div>
+
+            <div class="image-item">
+            <img src="assets/images/LUNA.png" alt="Student Photo2">
+            <div class="caption">
+                <div class="quote">"If missing shots was a rank, I'd be Radiant"</div>
+                <div class="name">– Ejay</div>
+            </div>
+            </div>
+
+            <div class="image-item">
+            <img src="assets/images/LEO.jpg" alt="Student Photo2">
+            <div class="caption">
+                <div class="quote">"Value your self"</div>
+                <div class="name">– Leo</div>
+            </div>
+            </div>
+            
+            <div class="image-item">
+            <img src="assets/images/LARA.jpg" alt="Student Photo3">
+            <div class="caption">
+                <div class="quote">"Gusto ko matulog"</div>
+                <div class="name">– Lara</div>
+            </div>
+            </div>
+
+            <div class="image-item">
+            <img src="assets/images/PINO.jpg" alt="Student Photo3">
+            <div class="caption">
+                <div class="quote">"Trust GOD plans"</div>
+                <div class="name">– Karl Pino</div>
+            </div>
+            </div>
+
+            <div class="image-item">
+            <img src="assets/images/DION.jpg" alt="Student Photo3">
+            <div class="caption">
+                <div class="quote">"Put everything to GOD"</div>
+                <div class="name">– Dion</div>
+            </div>
+            </div>  
+
+            <div class="image-item">
+            <img src="assets/images/CUAYZON.jpg" alt="Student Photo4">
+            <div class="caption">
+                <div class="quote">"E.3.W are all the same"</div>
+                <div class="name">– Cuayzon</div>
+            </div>
+            </div>
+
+            <div class="image-item">
+            <img src="assets/images/noprofile.png" alt="Student Photo3">
+            <div class="caption">
+                <div class="quote">"Time is gold"</div>
+                <div class="name">– Jovs</div>
+            </div>
+            </div>
+
+            <div class="image-item">
+            <img src="assets/images/noprofile.png" alt="Student Photo3">
+            <div class="caption">
+                <div class="quote">"Rain quote"</div>
+                <div class="name">– Adonis</div>
+            </div>
+            </div>
+
+            <div class="image-item">
+            <img src="assets/images/noprofile.png" alt="Student Photo3">
+            <div class="caption">
+                <div class="quote">"Dont push your self too hard"</div>
+                <div class="name">– Amiel</div>
+            </div>
+            </div>
+
+            <div class="image-item">
+            <img src="assets/images/noprofile.png" alt="Student Photo3">
+            <div class="caption">
+                <div class="quote">"Dont be afraid"</div>
+                <div class="name">– Devero</div>
+            </div>
+            </div>
+
+        </div>
+        </section>
+    </main>
+    <script>
+        function loadSection(sectionId, htmlPath, jsPath, onloadCallback) {
+            fetch(htmlPath).then(res => res.text()).then(data => {
+                document.getElementById(sectionId).innerHTML = data;
+                if (jsPath) {
+                    const script = document.createElement('script');
+                    script.src = jsPath;
+                    script.onload = function() {
+                        if (typeof onloadCallback === 'function') {
+                            setTimeout(onloadCallback, 150);
+                        }
+                    };
+                    document.body.appendChild(script);
+                } else if (typeof onloadCallback === 'function') {
+                    onloadCallback();
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            loadSection('header', 'functions/Header/header.html', 'functions/Header/header.js', function() {
+                if (typeof setupHamburgerMenu === 'function') {
+                    setupHamburgerMenu();
+                }
+            });
+        });
+
+        // Always use dark mode
+        document.body.classList.add('dark-theme');
+
+        function loadGiscus() {
+            const commentsSection = document.createElement('div');
+            commentsSection.className = 'comments-section';
+            commentsSection.innerHTML = '<h3>Comments</h3>';
+
+            const script = document.createElement('script');
+            script.src = 'https://giscus.app/client.js';
+            script.setAttribute('data-repo', 'darkmatter102/TVL-ICT');
+            script.setAttribute('data-repo-id', 'R_kgDORhit-Q');
+            script.setAttribute('data-category', 'General');
+            script.setAttribute('data-category-id', 'DIC_kwDORhit-c4C38zO');
+            script.setAttribute('data-mapping', 'pathname');
+            script.setAttribute('data-strict', '0');
+            script.setAttribute('data-reactions-enabled', '1');
+            script.setAttribute('data-emit-metadata', '0');
+            script.setAttribute('data-input-position', 'bottom');
+            script.setAttribute('data-theme', 'preferred_color_scheme');
+            script.setAttribute('data-lang', 'en');
+            script.setAttribute('crossorigin', 'anonymous');
+            script.async = true;
+
+            commentsSection.appendChild(script);
+            document.querySelector('main').appendChild(commentsSection);
+        }
+
+        window.addEventListener('load', loadGiscus);
+
+    </script>
+</body>
+</html>
+
