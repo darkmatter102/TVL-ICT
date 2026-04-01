@@ -72,25 +72,31 @@
         document.body.classList.add('dark-theme');
 
 
-        function getVideoThumbnail(url) {
-            // YouTube (long and short forms)
-            if (/youtu(?:\.be|be\.com)/.test(url)) {
-                let videoId;
-                if (url.includes('youtube.com/watch')) {
-                    videoId = url.split('v=')[1].split('&')[0];
-                } else {
-                    videoId = url.split('youtu.be/')[1].split('?')[0];
-                }
-                return `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
-            }
-
-            if (url.includes('vimeo.com/')) {
-                const videoId = url.split('vimeo.com/')[1].split(/[?&]/)[0];
-                return `https://vumbnail.com/${videoId}.jpg`;
-            }
-
-            return 'assets/images/nothumb.png';
+function getVideoThumbnail(url) {
+    // YouTube 
+    if (/youtu(?:\.be|be\.com)/.test(url)) {
+        let videoId;
+        if (url.includes('youtube.com/watch')) {
+            videoId = url.split('v=')[1].split('&')[0];
+        } else {
+            videoId = url.split('youtu.be/')[1].split('?')[0];
         }
+        return `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+    }
+
+    // Vimeo
+    if (url.includes('vimeo.com/')) {
+        const videoId = url.split('vimeo.com/')[1].split(/[?&]/)[0];
+        return `https://vumbnail.com/${videoId}.jpg`;
+    }
+
+    // Facebook
+    if (url.includes('facebook.com/')) {
+        return 'assets/images/facebook-thumb.png';
+    }
+    
+    return 'assets/images/nothumb.png';
+}
 
         const videoItems = document.querySelectorAll('.video-item a');
         videoItems.forEach(item => {
