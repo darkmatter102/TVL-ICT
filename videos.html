@@ -16,32 +16,25 @@
             <div class="video-grid">
                 <div class="video-item">
                     <a href="https://youtu.be/bKunvFz3o74" target="_blank">
-                        <img src="assets/images/nothumb.jpg" alt="Batch 2024 to 2026">
+                        <img src="assets/images/nothumb.png" alt="Batch 2024 to 2026">
                         <h3>Batch 2024 to 2026</h3>
                     </a>
                 </div>
                 <div class="video-item">
-                    <iframe 
-                      src="https://www.facebook.com/plugins/video.php?height=420&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F2469537470167098%2F&show_text=false&width=560&t=0" 
-                      width="560" 
-                      height="420" 
-                      style="border:none;overflow:hidden" 
-                      scrolling="no" 
-                      frameborder="0" 
-                      allowfullscreen="true" 
-                      allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" 
-                      allowFullScreen="true">
-                    </iframe>
+                    <a href="https://www.facebook.com/reel/2469537470167098" target="_blank">
+                        <img src="assets/images/nothumb.png" alt="Batch 2024 to 2026">
+                        <h3>Batch 2024 to 2026</h3>
+                    </a>
                 </div>
                 <div class="video-item">
                     <a href="https://www.youtube.com/watch?v=example2" target="_blank">
-                        <img src="assets/images/nothumb.jpg" alt="Networking Basics">
+                        <img src="assets/images/nothumb.png" alt="Networking Basics">
                         <h3>Networking Basics</h3>
                     </a>
                 </div>
                 <div class="video-item">
                     <a href="https://youtu.be/ilh6eRfNHD0?si=OqCU_UaTpvilNu7E" target="_blank">
-                        <img src="assets/images/nothumb.jpg" alt="OS Installation">
+                        <img src="assets/images/nothumb.png" alt="OS Installation">
                         <h3>Operating System Installation Tutorial</h3>
                     </a>
                 </div>
@@ -78,32 +71,32 @@
         // Always use dark mode
         document.body.classList.add('dark-theme');
 
+        function getVideoThumbnail(url) {
+            // YouTube
+            if (/youtu(?:\.be|be\.com)/.test(url)) {
+                let videoId;
+                if (url.includes('youtube.com/watch')) {
+                    videoId = url.split('v=')[1].split('&')[0];
+                } else {
+                    videoId = url.split('youtu.be/')[1].split('?')[0];
+                }
+                return `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+            }
 
-function getVideoThumbnail(url) {
-    // YouTube 
-    if (/youtu(?:\.be|be\.com)/.test(url)) {
-        let videoId;
-        if (url.includes('youtube.com/watch')) {
-            videoId = url.split('v=')[1].split('&')[0];
-        } else {
-            videoId = url.split('youtu.be/')[1].split('?')[0];
+            // Vimeo
+            if (url.includes('vimeo.com/')) {
+                const videoId = url.split('vimeo.com/')[1].split(/[?&]/)[0];
+                return `https://vumbnail.com/${videoId}.jpg`;
+            }
+
+            // Facebook
+            if (url.includes('facebook.com/')) {
+                return 'assets/images/nothumb.png';
+            }
+
+            // Default fallback
+            return 'assets/images/nothumb.png';
         }
-        return `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
-    }
-
-    // Vimeo
-    if (url.includes('vimeo.com/')) {
-        const videoId = url.split('vimeo.com/')[1].split(/[?&]/)[0];
-        return `https://vumbnail.com/${videoId}.jpg`;
-    }
-
-    // Facebook
-    if (url.includes('facebook.com/')) {
-        return 'assets/images/facebook-thumb.png';
-    }
-    
-    return 'assets/images/nothumb.png';
-}
 
         const videoItems = document.querySelectorAll('.video-item a');
         videoItems.forEach(item => {
@@ -141,8 +134,6 @@ function getVideoThumbnail(url) {
         }
 
         window.addEventListener('load', loadGiscus);
-
     </script>
 </body>
 </html>
-
