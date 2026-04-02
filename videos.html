@@ -95,7 +95,7 @@
             }
 
             // Default fallback
-            return 'assets/images/nothumb.png';
+            return 'assets/images/nothumb.jpg';
         }
 
         const videoItems = document.querySelectorAll('.video-item a');
@@ -104,7 +104,7 @@
             const img = item.querySelector('img');
             img.src = getVideoThumbnail(url);
             img.onerror = function() {
-                this.src = 'assets/images/nothumb.png';
+                this.src = 'assets/images/nothumb.jpg';
             };
         });
 
